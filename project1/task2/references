@@ -1,0 +1,96 @@
+{  
+    "referenceGuide" : "Cite all the reference sources in the required format. Proper citations will help you avoid unnecessary trouble. Read JSON grammar from Internet if needed.",
+    "websites":[  
+        {  
+            "title":"create_security_group",
+            "url":"https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2/client/create_security_group.html",
+            "code":"create the security group function",
+            "description":"copied the parameters of the function and removed some unnecessary params"
+        },
+        {  
+            "title":"put_metric_alarm",
+            "url":"https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cloudwatch/client/put_metric_alarm.html",
+            "code":"create_alarm function",
+            "description":"copied the parameters of the function and removed some unnecessary params"
+        },
+        {  
+            "title":"create_instances",
+            "url":"https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2/service-resource/create_instances.html",
+            "code":"create instances function",
+            "description":"copied the parameters of the function and removed some unnecessary params"
+        },
+        {  
+            "title":"ElasticLoadBalancingv2",
+            "url":"https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/elbv2.html",
+            "code":"create loadbalancer function",
+            "description":"copied the parameters of the function and removed some unnecessary params"
+        },
+        {  
+            "title":"create_launch_template",
+            "url":"https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2/client/create_launch_template.html",
+            "code":"create launch template function",
+            "description":"copied the parameters of the function and removed some unnecessary params"
+        },
+        {  
+            "title":"create_target_group",
+            "url":"https://boto3.amazonaws.com/v1/documentation/api/1.26.89/reference/services/elbv2/client/create_target_group.html",
+            "code":"create target group function",
+            "description":"copied the parameters of the function and removed some unnecessary params"
+        },
+        {  
+            "title":"create_listener",
+            "url":"https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/elbv2/client/create_listener.html",
+            "code":"Associate the target group and loadbalancer",
+            "description":"copied the parameters of the function and removed some unnecessary params"
+        },
+        {  
+            "title":"create_auto_scaling_group",
+            "url":"https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/autoscaling/client/create_auto_scaling_group.html",
+            "code":"Associate the target group and loadbalancer",
+            "description":"copied the parameters of the function and removed some unnecessary params"
+        },
+        {  
+            "title":"delete_launch_template",
+            "url":"https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2/client/delete_launch_template.html",
+            "code":"delete the launch template",
+            "description":"copied the parameters of the function and removed some unnecessary params and Note"
+        },
+        {  
+            "title":"delete_load_balancer",
+            "url":"https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2/client/delete_security_group.html",
+            "code":"delete the load balancer",
+            "description":"refered to the param needed"
+        },
+        {  
+            "title":"delete_security_group",
+            "url":"https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2/client/delete_launch_template.html",
+            "code":"delete the launch template",
+            "description":"we can specify either group name or group ID"
+        },
+        {  
+            "title":"terminate_instances",
+            "url":"https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2/client/terminate_instances.html",
+            "code":"delete the instances",
+            "description":"referred to this docs to delete the LG"
+        },
+        {  
+            "title":"terminate_instances",
+            "url":"https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2/client/terminate_instances.html",
+            "code":"delete the instances",
+            "description":"referred to this docs to delete the LG"
+        }
+
+
+
+        
+
+        
+    ],
+    "collaborators":[
+        {
+            "submissionUsername":"N/A",
+            "collaborationType":"N/A",
+            "description":"N/A"
+        }
+    ]
+}

@@ -1,0 +1,316 @@
+name: cicd
+
+on:
+  # Triggers the workflow only when changes are pushed to the main branch.
+  push:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# ** IMPORTANT: For grading purpose, please do NOT change the env names, the jobs, or the steps id and name in this file  **
+
+# TODO: add your environment variables
+env:
+  GCP_CLUSTER_NAME:
+  GCP_PROJECT_ID:
+  GCP_REGION:
+  AZ_CONTAINER_REGISTRY:
+  AZ_CLUSTER_NAME:
+  AZ_RESOURCE_GROUP:
+  # Hint: Use GitHub context to extract commit SHA as a dynamic image tag: https://docs.github.com/en/actions/learn-github-actions/contexts#github-context
+  # Please use DOCKER_TAG to tag all your images in this workflow.
+  DOCKER_TAG: 
+
+jobs:
+  # This job checks if there are any changes in the source code of specific microservices (chat, login, profile) and outputs the results (true if any changes).
+  # reference: https://github.com/tj-actions/changed-files
+  # ** do NOT change code for this job **
+  check-changed-files:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Get profile-service changed java files
+        id: changed-files-profile-service-java
+        uses: tj-actions/changed-files@v41
+        with:
+          files: |
+            profile-service/src/main/java/**
+      - name: Get login-service changed java files
+        id: changed-files-login-service-java
+        uses: tj-actions/changed-files@v41
+        with:
+          files: |
+            login-service/src/main/java/**
+      - name: Get chat-service changed java files
+        id: changed-files-chat-service-java
+        uses: tj-actions/changed-files@v41
+        with:
+          files: |
+            chat-service/src/main/java/**
+      - name: Get profile-service changed helm files
+        id: changed-files-profile-service-helm
+        uses: tj-actions/changed-files@v41
+        with:
+          files: |
+            profile-service/src/main/helm/**
+      - name: Get profile-service changed helm-multi-cloud files
+        id: changed-files-profile-service-helm-multi-cloud
+        uses: tj-actions/changed-files@v41
+        with:
+          files: |
+            profile-service/src/main/helm-multi-cloud/**
+      - name: Get login-service changed helm files
+        id: changed-files-login-service-helm
+        uses: tj-actions/changed-files@v41
+        with:
+          files: |
+            login-service/src/main/helm/**
+      - name: Get login-service changed helm-multi-cloud files
+        id: changed-files-login-service-helm-multi-cloud
+        uses: tj-actions/changed-files@v41
+        with:
+          files: |
+            login-service/src/main/helm-multi-cloud/**
+      - name: Get chat-service changed helm files
+        id: changed-files-chat-service-helm
+        uses: tj-actions/changed-files@v41
+        with:
+          files: |
+            chat-service/src/main/helm/**
+    outputs:
+      profile-service-java-any-changed: ${{ steps.changed-files-profile-service-java.outputs.any_changed }}
+      login-service-java-any-changed: ${{ steps.changed-files-login-service-java.outputs.any_changed }}
+      chat-service-java-any-changed: ${{ steps.changed-files-chat-service-java.outputs.any_changed }}
+      profile-service-helm-any-changed: ${{ steps.changed-files-profile-service-helm.outputs.any_changed }}
+      profile-service-helm-multi-cloud-any-changed: ${{ steps.changed-files-profile-service-helm-multi-cloud.outputs.any_changed }}
+      login-service-helm-any-changed: ${{ steps.changed-files-login-service-helm.outputs.any_changed }}
+      login-service-helm-multi-cloud-any-changed: ${{ steps.changed-files-login-service-helm-multi-cloud.outputs.any_changed }}
+      chat-service-helm-any-changed: ${{ steps.changed-files-chat-service-helm.outputs.any_changed }}
+
+  # Build and push image to GCR and ACR if changes are detected in Java source code
+  build-push-image:
+    runs-on: ubuntu-latest
+    needs: check-changed-files
+    # only build and push image when there's java code update
+    if: | 
+      needs.check-changed-files.outputs.profile-service-java-any-changed == 'true' ||
+      needs.check-changed-files.outputs.login-service-java-any-changed == 'true' || 
+      needs.check-changed-files.outputs.chat-service-java-any-changed == 'true'
+    steps:
+      # Checkout to the repo
+      # ** Do NOT change this code **
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      ### Build docker images for microservices that have changed ###
+
+      ## profile-service: deploy to both GCP and Azure ##
+      # TODO: Build docker image with bash script in `run`. You must tag the image with commit SHA
+      # Hint: To push the same docker image to multiple container registries, use `-t` tag multiple times in the `docker build` command to create several tags to the same image
+      - name: Build docker image profile-service
+        if: needs.check-changed-files.outputs.profile-service-java-any-changed == 'true'
+        run: |
+          # TODO
+      ## login-service: deploy to both GCP and Azure ##
+      # TODO: Build docker image with bash script in `run`. You must tag the image with commit SHA
+      - name: Build docker image login-service
+        if: needs.check-changed-files.outputs.login-service-java-any-changed == 'true'
+        run: |
+          # TODO
+
+      ## chat-service: only deploy to GCP ##
+      # TODO: Build docker image with bash script in `run`. You must tag the image with commit SHA
+      - name: Build docker image chat-service
+        if: needs.check-changed-files.outputs.chat-service-java-any-changed == 'true'
+        run: |
+          # TODO
+
+      ### Push docker images to GCR and ACR ###
+      ## GCP setup ##
+      # TODO: Authenticate to Google Cloud with Github action
+      # Document: Authenticate into gcloud https://github.com/marketplace/actions/authenticate-to-google-cloud
+      # We will use Service Account key JSON to authenticate into gcloud for this project
+      - name: Authenticate to Google Cloud
+        uses: TODO
+      # TODO: Setup gcloud CLI
+      # Document: set up gcloud CLI https://github.com/marketplace/actions/set-up-gcloud-cloud-sdk-environment
+      # Hint: Setup Cloud SDK with the "project_id" so that you don't have to specify "--project" in the gcloud commands
+      - name: Setup gcloud CLI
+        uses: TODO
+      # TODO: Complete the bash script in `run` to configure docker with gcloud CLI for authentication
+      # Document: https://cloud.google.com/sdk/gcloud/reference/auth/configure-docker
+      # Hint: --quiet flag disables the interactive prompt
+      - name: Configure Docker with gcloud CLI
+        run: |
+          # TODO
+
+       ## Push Docker images to GCR ##
+      # TODO: Push the built Docker image to GCR with bash script in `run`
+      - name: Push Docker image profile-service gcp
+        if: needs.check-changed-files.outputs.profile-service-java-any-changed == 'true'
+        run: |
+          # TODO
+
+      # TODO: Push the built Docker image to GCR with bash script in `run`
+      - name: Push Docker image login-service gcp
+        if: needs.check-changed-files.outputs.login-service-java-any-changed == 'true'
+        run: |
+          # TODO
+
+      # TODO: Push the built Docker image to GCR with bash script in `run`
+      - name: Push Docker image chat-service gcp
+        if: needs.check-changed-files.outputs.chat-service-java-any-changed == 'true'
+        run: |
+          # TODO
+
+      ## Azure setup ##
+      # TODO: Login to ACR with login-server, username, and password
+      # Document: https://github.com/marketplace/actions/azure-container-registry-login
+      - name: Azure Container Registry login
+        uses: TODO
+
+       ## Push Docker images to ACR ##
+      # TODO: Push the built Docker image to ACR with bash script in `run`
+      - name: Push Docker image profile-service az
+        if: needs.check-changed-files.outputs.profile-service-java-any-changed == 'true'
+        run: |
+          # TODO
+      # TODO: Push the built Docker image to ACR with bash script in `run`
+      - name: Push Docker image login-service az
+        if: needs.check-changed-files.outputs.login-service-java-any-changed == 'true'
+        run: |
+          # TODO
+  
+  ### Deploy Microservices to GCP and Azure ###
+
+  deploy-service-to-gcp:
+    runs-on: ubuntu-latest
+    needs: 
+      - check-changed-files
+      - build-push-image
+    # deploy if there are updates in Java source code or helm templates
+    if: |
+      always() &&
+      (needs.build-push-image.result == 'success' && needs.check-changed-files.outputs.profile-service-java-any-changed == 'true') ||
+      (needs.build-push-image.result == 'success' && needs.check-changed-files.outputs.login-service-java-any-changed == 'true') || 
+      (needs.build-push-image.result == 'success' && needs.check-changed-files.outputs.chat-service-java-any-changed == 'true') ||
+      (needs.build-push-image.result == 'skipped' && needs.check-changed-files.outputs.profile-service-helm-any-changed == 'true') ||
+      (needs.build-push-image.result == 'skipped' && needs.check-changed-files.outputs.login-service-helm-any-changed == 'true') ||
+      (needs.build-push-image.result == 'skipped' && needs.check-changed-files.outputs.chat-service-helm-any-changed == 'true')
+    steps:
+      # Checkout to the repo
+      # ** do NOT change this code **
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Update deployment.yamls to use the docker image we just pushed for profile-service
+      # TODO: complete the bash script in `run` with your docker image name and file path
+      - name: update profile deployment
+        if: needs.check-changed-files.outputs.profile-service-java-any-changed == 'true' 
+        run: |
+          sed -i 's|image:.*|image: <YOUR-DOCKER-IMAGE-NAME>|' <YOUR-PATH-TO-DEPLOYMENT-YAML>
+
+      # TODO: complete the bash script in `run` with your docker image name and file path
+      - name: update login deployment
+        if: needs.check-changed-files.outputs.login-service-java-any-changed == 'true' 
+        run: |
+          sed -i 's|image:.*|image: <YOUR-DOCKER-IMAGE-NAME>|' <YOUR-PATH-TO-DEPLOYMENT-YAML>
+
+      # TODO: complete the bash script in `run` with your docker image name and file path
+      - name: update chat deployment
+        if: needs.check-changed-files.outputs.chat-service-java-any-changed == 'true' 
+        run: |
+          sed -i 's|image:.*|image: <YOUR-DOCKER-IMAGE-NAME>|' <YOUR-PATH-TO-DEPLOYMENT-YAML>
+
+      # TODO: Authenticate to Google Cloud with Github Action
+      # Document: Authenticate into gcloud https://github.com/marketplace/actions/authenticate-to-google-cloud
+      # We will use Service Account key JSON to authenticate into gcloud for this project
+      - name: Authenticate to Google Cloud
+        uses: TODO
+
+      # TODO: Get the GKE credentials so that we can deploy to the cluster
+      # Document: Get GKE Credentials https://github.com/marketplace/actions/get-gke-credentials
+      - name: Get GKE Credentials
+        uses: TODO
+
+      # TODO: Deploy the new profile helm chart to GKE cluster with the bash script in `run`
+      - name: Deploy profile-service to the cluster with helm
+        if: | 
+          needs.check-changed-files.outputs.profile-service-java-any-changed == 'true' || 
+          (needs.build-push-image.result == 'skipped' && needs.check-changed-files.outputs.profile-service-helm-any-changed == 'true')
+        run: |
+          # TODO
+      # TODO: Deploy the new login helm chart to GKE cluster with helm with the bash script in `run`
+      - name: Deploy login-service to the cluster with helm
+        if: |
+          needs.check-changed-files.outputs.login-service-java-any-changed == 'true' ||
+          (needs.build-push-image.result == 'skipped' && needs.check-changed-files.outputs.login-service-helm-any-changed == 'true')
+        run: |
+          # TODO
+      # TODO: Deploy the new chat helm chart to GKE cluster with helm with the bash script in `run`
+      - name: Deploy chat-service to the cluster with helm
+        if: | 
+          needs.check-changed-files.outputs.chat-service-java-any-changed == 'true' ||
+          (needs.build-push-image.result == 'skipped' && needs.check-changed-files.outputs.chat-service-helm-any-changed == 'true')
+        run: |
+          # TODO
+
+  deploy-service-to-az:
+    runs-on: ubuntu-latest
+    needs: 
+      - check-changed-files
+      - build-push-image
+    # deploy if there are updates in Java source code or helm templates
+    if: |
+      always() &&
+      (needs.build-push-image.result == 'success' && needs.check-changed-files.outputs.profile-service-java-any-changed == 'true') ||
+      (needs.build-push-image.result == 'success' && needs.check-changed-files.outputs.login-service-java-any-changed == 'true') || 
+      (needs.build-push-image.result == 'skipped' && needs.check-changed-files.outputs.profile-service-helm-multi-cloud-any-changed == 'true') ||
+      (needs.build-push-image.result == 'skipped' && needs.check-changed-files.outputs.login-service-helm-multi-cloud-any-changed == 'true')
+    steps:
+      # Checkout to the repo
+      # ** do not change this code **
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Update deployment.yamls to use the docker image we just pushed for profile-service
+      # TODO: complete the bash script in `run` with your docker image name and file path
+      - name: update profile deployment
+        if: needs.check-changed-files.outputs.profile-service-java-any-changed == 'true' 
+        run: |
+          sed -i 's|image:.*|image: <YOUR-DOCKER-IMAGE-NAME>|' <YOUR-PATH-TO-DEPLOYMENT-YAML>
+
+      # Update deployment.yamls to use the docker image we just pushed for login-service
+      # TODO: complete the bash script in `run` with your docker image name and file path
+      - name: update login deployment
+        if: needs.check-changed-files.outputs.login-service-java-any-changed == 'true' 
+        run: |
+          sed -i 's|image:.*|image: <YOUR-DOCKER-IMAGE-NAME>|' <YOUR-PATH-TO-DEPLOYMENT-YAML>
+
+      # TODO: Login to azure
+      # Document: Azure Login https://github.com/marketplace/actions/azure-login
+      # We will use creds to login https://github.com/marketplace/actions/azure-login#creds
+      - name: Login to Azure
+        uses: TODO
+        
+      # TODO: Set AKS context so we that can deploy to the azure cluster
+      # Document: Azure Kubernetes set context https://github.com/marketplace/actions/azure-kubernetes-set-context
+      - name: Set AKS context
+        uses: TODO
+
+      # TODO: Deploy the new profile helm chart to AKS cluster with helm with the bash script in `run`
+      - name: Deploy profile-service to the cluster with helm
+        if: | 
+          needs.check-changed-files.outputs.profile-service-java-any-changed == 'true' ||
+          (needs.build-push-image.result == 'skipped' && needs.check-changed-files.outputs.profile-service-helm-multi-cloud-any-changed == 'true') 
+        run: |
+          # TODO
+      # TODO: Deploy the new login helm chart to AKS cluster with helm with the bash script in `run`
+      - name: Deploy login-service to the cluster with helm
+        if: | 
+          needs.check-changed-files.outputs.login-service-java-any-changed == 'true' ||
+          (needs.build-push-image.result == 'skipped' && needs.check-changed-files.outputs.login-service-helm-multi-cloud-any-changed == 'true')
+        run: |
+          # TODO

@@ -1,0 +1,40 @@
+{  
+    "referenceGuide" : "Cite all the reference sources in the required format. Proper citations will help you avoid unnecessary trouble. Read JSON grammar from Internet if needed.",
+    "websites":[  
+        {  
+            "title":"Create_instances",
+            "url":"https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2/service-resource/create_instances.html",
+            "code":"building the create_instances function , I refered to this docs",
+            "description":"I used same docs for developing the create security group function"
+        },
+        {
+            "title":"terminate_instances",
+            "url":"https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2/client/terminate_instances.html",
+            "code":"terminate instances function",
+            "description":"terminate the instances"
+
+        },
+        {
+            "title":"create the security group",
+            "url":"https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2/client/create_security_group.html",
+            "code":"create the security group function",
+            "description":"create the security group"
+
+        },
+        {
+            "title":"create the security group",
+            "url":"https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2/client/create_security_group.html",
+            "code":"create the security group function",
+            "description":"create the security group"
+
+        }
+
+    ],
+    "collaborators":[
+        {
+            "submissionUsername":"N/A",
+            "collaborationType":"N/A",
+            "description":"N/A"
+        }
+    ]
+}

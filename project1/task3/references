@@ -1,0 +1,40 @@
+{  
+    "referenceGuide" : "Cite all the reference sources in the required format. Proper citations will help you avoid unnecessary trouble. Read JSON grammar from Internet if needed.",
+    "websites":[  
+        {  
+            "title":"Resource: aws_lb",
+            "url":"https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb",
+            "code":"creating the application loadbalancer",
+            "description":"for creating the ALB block in my codes"
+        },
+        {
+            "title":"Resource: aws_lb_listener",
+            "url":"https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_listener",
+            "code":"loadbalancer listener block",
+            "description":"creating the LB listeners"
+
+        },
+        {
+            "title":"Resource: aws_lb_target_group",
+            "url":"https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group",
+            "code":"create the target group function",
+            "description":"create the target group"
+
+        },
+        {
+            "title":"Resource: aws_cloudwatch_metric_alarm",
+            "url":"https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm",
+            "code":"autoscaling policy and cloud watch alarm actions",
+            "description":"copied the code to create the cloud watch alaram actions and autoscaling policy Reference to the cloud watch alarm"
+
+        }
+
+    ],
+    "collaborators":[
+        {
+            "submissionUsername":"N/A",
+            "collaborationType":"N/A",
+            "description":"N/A"
+        }
+    ]
+}
