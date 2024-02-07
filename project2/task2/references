@@ -2,17 +2,29 @@
     "referenceGuide" : "Cite all the reference sources in the required format. Proper citations will help you avoid unnecessary trouble. Read JSON grammar from Internet if needed.",
     "websites":[  
         {  
-            "title":"<title of the page>",
-            "url":"<url>",
-            "code":"<in which code you use the snippet or the idea>",
-            "description":"<additional information you find it necessary to provide>"
+            "title":"Pushing and pulling images ",
+            "url":"https://cloud.google.com/artifact-registry/docs/docker/pushing-and-pulling",
+            "code":"push docker image to GCR",
+            "description":"refered to this documentation to push image to gcr"
+        },
+        {  
+            "title":"Service",
+            "url":"https://kubernetes.io/docs/concepts/services-networking/service/",
+            "code":"create the service.yaml",
+            "description":"referred to thisdocumentation to create the service deployment"
+        },
+        {  
+            "title":"Deployments",
+            "url":"https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+            "code":"create the deployment of the docker image",
+            "description":"refer to this documentation to create the deployment.yaml"
         }
     ],
     "collaborators":[
         {
-            "submissionUsername":"<collaborator submissionUsername>",
-            "collaborationType":"<I helped X, X helped me, or we helped each other>",
-            "description":"<describe the idea you shared>"
+            "submissionUsername":"N/A",
+            "collaborationType":"N/A",
+            "description":"N/A"
         }
     ]
 }
