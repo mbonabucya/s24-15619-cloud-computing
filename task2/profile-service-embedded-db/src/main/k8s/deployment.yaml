@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-profile-deployment
+spec:
+  replicas:  3
+  selector:
+    matchLabels:
+      app: profile-service
+  template:
+    metadata:
+      labels:
+        app: profile-service
+    spec:
+      containers:
+      - name: profile-service
+        image: gcr.io/docker-kubernetes-gcp-123/profileservice:1.0.0
+        ports:
+        - containerPort:  8080
