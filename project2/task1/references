@@ -2,17 +2,23 @@
     "referenceGuide" : "Cite all the reference sources in the required format. Proper citations will help you avoid unnecessary trouble. Read JSON grammar from Internet if needed.",
     "websites":[  
         {  
-            "title":"<title of the page>",
-            "url":"<url>",
-            "code":"<in which code you use the snippet or the idea>",
-            "description":"<additional information you find it necessary to provide>"
+            "title":"How do I run a container?",
+            "url":"https://docs.docker.com/guides/walkthroughs/run-a-container/",
+            "code":"dockerfile",
+            "description":"referred to this documentation to build dockerfile"
+        },
+        {  
+            "title":"gcloud init ",
+            "url":"https://cloud.google.com/sdk/docs/initializing#run_gcloud_init",
+            "code":"configure the google cloud sdk",
+            "description":"referred to this documentation to install google cloud sdk"
         }
     ],
     "collaborators":[
         {
-            "submissionUsername":"<collaborator submissionUsername>",
-            "collaborationType":"<I helped X, X helped me, or we helped each other>",
-            "description":"<describe the idea you shared>"
+            "submissionUsername":"N/A",
+            "collaborationType":"N/A",
+            "description":"N/A"
         }
     ]
 }
