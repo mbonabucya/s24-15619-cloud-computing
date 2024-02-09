@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: spring-chat-config
+data:
+  SPRING_REDIS_HOST: 'redis-service'
+  SPRING_REDIS_PASSWORD: 'SuperSecretRedisPassword'
+  SPRING_REDIS_PORT: '6379'
+  RAW_TOPIC_MESSAGE: '/topic/messages'
+  # TODO: update endpoints for multi-cloud in task5
+  # You can list multiple endpoints by connecting them with a comma
+  # e.g. 'endpoint1,endpoint2'
+  LIST_OF_PROFILE_ENDPOINTS: 'spring-profile-service.default.svc.cluster.local'
+  MYSQL_DB_HOST: 'mysql-chat.default.svc.cluster.local'
+  # TODO: update MYSQL_DB_USER and MYSQL_DB_PASSWORD to match the variables that you used 
+  #       to install the MySQL service
+  MYSQL_DB_USER: 'james'
+  MYSQL_DB_PASSWORD: 'login'
+  MYSQL_DB_PORT: '3306'

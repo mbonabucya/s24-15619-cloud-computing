@@ -1,0 +1,30 @@
+{
+    "referenceGuide" : "Cite all the reference sources in the required format. Proper citations will help you avoid unnecessary trouble. Read JSON grammar from Internet if needed.",
+    "websites":[
+        {
+            "title":"Ingress",
+            "url":"https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource",
+            "code":"create the ingress resource",
+            "description":"refered to this documentations to create the ingress.yaml"
+        },
+        {
+            "title":"Service",
+            "url":"https://kubernetes.io/docs/concepts/services-networking/service/",
+            "code":"create the services",
+            "description":"refered to this documentation for spring-chat-service.yaml spring-profile-service.yaml spring-login-service.yaml"
+        },
+        {
+            "title":"Deployments",
+            "url":"https://kubernetes.io/docs/concepts/workloads/controllers/deployment/",
+            "code":"create the deployments",
+            "description":"refered to this documentation for spring-chat-deployment.yaml spring-profile-deployment.yaml spring-login-deployment.yaml"
+        }
+    ],
+    "collaborators":[
+        {
+            "submissionUsername":"N/A",
+            "collaborationType":"N/A",
+            "description":"N/A"
+        }
+    ]
+}

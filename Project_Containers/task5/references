@@ -1,0 +1,51 @@
+{
+    "referenceGuide" : "Cite all the reference sources in the required format. Proper citations will help you avoid unnecessary trouble. Read JSON grammar from Internet if needed.",
+    "websites":[
+        {
+            "title":"Configure ACR integration for an existing AKS cluster",
+            "url":"https://learn.microsoft.com/en-us/azure/aks/cluster-container-registry-integration?tabs=azure-cli",
+            "code":"debug the Immage pull of error",
+            "description":"debug the image not being pulled error"
+        },
+        {
+            "title":"Create an Azure container registry and push a container image",
+            "url":"https://learn.microsoft.com/en-us/azure/container-instances/container-instances-tutorial-prepare-acr#push-image-to-azure-container-registry"
+            "code":"push the image azure container registry",
+            "description":"referred to this document for pushing the image to acr "
+        },
+        {
+            "title":"Create an Azure container registry and push a container image",
+            "url":"https://learn.microsoft.com/en-us/azure/container-instances/container-instances-tutorial-prepare-acr#push-image-to-azure-container-registry"
+            "code":"push the image azure container registry",
+            "description":"referred to this document for pushing the image to acr "
+        },
+
+        {
+            "title":"HorizontalPodAutoscaler Walkthrough"
+            "url":"https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/"
+            "code":"horizontal autoscaling",
+            "description":"referred to this document for changing deployment to add autoscaling"
+        },
+
+       {
+            "title":"HorizontalPodAutoscaler Walkthrough"
+            "url":"https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/"
+            "code":"horizontal autoscaling",
+            "description":"referred to this document for changing deployment to add autoscaling"
+        },
+        {
+            "title":"Horizontal Pod Autoscaling"
+            "url":"https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/"
+            "code":"horizontal autoscaling inside deployment",
+            "description":"referred to this document for changing deployment to add autoscaling"
+        }
+
+    ],
+    "collaborators":[
+        {
+            "submissionUsername":"N/A",
+            "collaborationType":"N/A",
+            "description":"N/A"
+        }
+    ]
+}

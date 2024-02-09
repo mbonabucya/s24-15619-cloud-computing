@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wechat-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /login
+        pathType: Prefix
+        backend:
+          service:
+            name: spring-login-service
+            port:
+              number: 80
+      
+      - path: /profile
+        pathType: Prefix
+        backend:
+          service:
+            name: spring-profile-service
+            port:
+              number: 80
+
