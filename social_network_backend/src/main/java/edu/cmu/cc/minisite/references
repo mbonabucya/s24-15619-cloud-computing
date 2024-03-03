@@ -1,0 +1,30 @@
+{
+  "referenceGuide":"Cite all the reference sources in the required format. Proper citations will help you avoid unnecessary trouble but does not make it acceptable to copy code. Read the course and university policy statements in this regard. When working with others, limit the discussion to block diagrams and arrows. Do not look at another students' code. Read the JSON semantics and make use of JSON validator from the Internet if needed.",
+  "websites":[
+    {
+      "title":"PreparedStatement interface",
+      "url":"https://www.javatpoint.com/PreparedStatement-interface",
+      "code":"refered to this documentation for task 1 ",
+      "description":"get username and profile photo"
+    },
+    {
+      "title":"What is a Graph Database?",
+      "url":"https://neo4j.com/developer/graph-database/",
+      "code":"refered to this documentation for task 3 ",
+      "description":"Getting the followers servlet"
+    },
+    {
+      "title":"Memory cache in Java",
+      "url":"https://stackoverflow.com/questions/575685/looking-for-simple-java-in-memory-cache",
+      "code":"refered to this documentation for task 5 ",
+      "description":"timeline with cache"
+    }
+  ],
+  "collaborators":[
+    {
+      "andrewId":"N/A",
+      "collaborationType":"N/A",
+      "description":"N/A"
+    }
+  ]
+}
